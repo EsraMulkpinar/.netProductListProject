@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="finalprojectModelStoreContainer" CdmEntityContainer="finalprojectEntities1">
+    <EntitySetMapping Name="Uye_giris">
+      <EntityTypeMapping TypeName="IsTypeOf(finalprojectModel.Uye_giris)">
+        <MappingFragment StoreEntitySet="Uye_giris">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alt_Kategoriler">
+      <EntityTypeMapping TypeName="IsTypeOf(finalprojectModel.Alt_Kategoriler)">
+        <MappingFragment StoreEntitySet="Alt_Kategoriler">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="altKategori_ad" ColumnName="altKategori_ad" />
+          <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cihazlar">
+      <EntityTypeMapping TypeName="IsTypeOf(finalprojectModel.Cihazlar)">
+        <MappingFragment StoreEntitySet="Cihazlar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cihaz_ad" ColumnName="cihaz_ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategoriler">
+      <EntityTypeMapping TypeName="IsTypeOf(finalprojectModel.Kategoriler)">
+        <MappingFragment StoreEntitySet="Kategoriler">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kategori_ad" ColumnName="kategori_ad" />
+          <ScalarProperty Name="cihaz_id" ColumnName="cihaz_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urunler">
+      <EntityTypeMapping TypeName="IsTypeOf(finalprojectModel.Urunler)">
+        <MappingFragment StoreEntitySet="Urunler">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="urun_ad" ColumnName="urun_ad" />
+          <ScalarProperty Name="altKategori_id" ColumnName="altKategori_id" />
+          <ScalarProperty Name="urun_img" ColumnName="urun_img" />
+          <ScalarProperty Name="indirme_linki" ColumnName="indirme_linki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Populer_Icerikler">
+      <EntityTypeMapping TypeName="finalprojectModel.Populer_Icerikler">
+        <MappingFragment StoreEntitySet="Populer_Icerikler">
+          <ScalarProperty Name="pop_icerik_link" ColumnName="pop_icerik_link" />
+          <ScalarProperty Name="pop_icerik_img" ColumnName="pop_icerik_img" />
+          <ScalarProperty Name="pop_icerik_adi" ColumnName="pop_icerik_adi" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

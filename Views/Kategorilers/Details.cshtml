@@ -1,0 +1,34 @@
+﻿@model FinalProject.Models.Kategoriler
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Kategoriler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.kategori_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kategori_ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cihazlar.cihaz_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cihazlar.cihaz_ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.id }, new { @class = "editbtn" }) |
+    @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "backtolist" })
+</p>

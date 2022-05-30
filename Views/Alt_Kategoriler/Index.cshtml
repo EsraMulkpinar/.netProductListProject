@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FinalProject.Models.Alt_Kategoriler>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alt Kategoriler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create", null, new { @class = "detaybtn" })
+</p>
+<table class="table"style="color:white;">
+    <tr >
+        <th>
+            @Html.DisplayNameFor(model => model.altKategori_ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategoriler.kategori_ad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.altKategori_ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategoriler.kategori_ad)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.id }, new { @class = "editbtn" }) |
+            @Html.ActionLink("Detay", "Details", new { id=item.id }, new { @class = "detaybtn" }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.id }, new { @class = "silbtn" })
+        </td>
+    </tr>
+}
+
+</table>

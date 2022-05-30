@@ -1,0 +1,56 @@
+﻿@model FinalProject.Models.Urunler
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sil</h2>
+
+<h3>Cihazı silmek istediğinize emin misiniz?</h3>
+
+<div>
+    <h4>Ürünler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.urun_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urun_ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.urun_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urun_img)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.indirme_linki)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.indirme_linki)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alt_Kategoriler.altKategori_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alt_Kategoriler.altKategori_ad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="silbtn" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "backtolist" })
+        </div>
+    }
+</div>

@@ -1,0 +1,86 @@
+﻿
+@model IEnumerable<FinalProject.Models.Populer_Icerikler>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="nav-link text-uppercase  container d-flex justify-content-center" style="min-height:300px;">
+
+
+    <div class="p-2 px-5">
+        <h3 class="nav-link text-uppercase">En çok indirlenler</h3>
+
+        <div>
+            <a href="https://www.gezginler.net/oyunlar/big-farm.html" target="_blank">
+                <img src="~/Content/assets/img/home_img.jpg" style="width:100%;height:100%;" />
+
+            </a>
+        </div>
+
+        <div class="py-3">
+            <a class="" href="https://www.gezginler.net/oyunlar/fortnite-battle-royale.html.google.com" target="_blank">
+                <img src="~/Content/assets/img/b_fortnite-battle-royale_oyunu.jpg" style="width:100%;height:100%;" />
+
+            </a>
+        </div>
+        <div class="py-3">
+            <a class="" href="https://www.gezginler.net/oyunlar/shakes-fidget.html.google.com" target="_blank">
+                <img src="~/Content/assets/img/b_shakes-fidget_oyunu.jpg" style="width:100%;height:100%;" />
+
+            </a>
+        </div>
+        <div class="py-3">
+            <a class="" href="https://www.gezginler.net/oyunlar/empire-world-war-3.html" target="_blank">
+                <img src="~/Content/assets/img/b_empire-world-war-3_oyunu.jpg" style="width:100%;height:100%;" />
+
+            </a>
+        </div>
+
+
+    </div>
+    <div class="p-2 px-5 ">
+        <h3 class="nav-link text-uppercase">Popüler İçerikler</h3>
+        @foreach (var item in Model)
+        {
+
+            <div class="d-flex flex-column " style="color: rgba(255, 255, 255, 0.7);">
+                @Html.DisplayFor(modelItem => item.pop_icerik_adi)
+
+
+
+
+                <a href="@item.pop_icerik_link " target="_blank">
+                    <img style="object-fit:cover;width:100%;height:50%;max-height:130px;" src="~/Content/assets/img/@item.pop_icerik_img" />
+
+                </a>
+            </div>
+        }
+        <div class="p-2">
+            <h2>Online Üye Sayısı</h2>
+            <h2 class="m-lg-3">@ViewBag.OnlineUyeSayisi</h2>
+        </div>
+
+    </div>
+
+</div>
+
+@*<div class="form-horizontal">
+    <div class="form-group">
+        <div class="control-label col-md-2">Saat</div>
+        <div class="col-md-10">
+            <input type="text" name="Gun" style="width:30px;" />/
+            <input type="text" name="Ay" style="width:30px;" />/
+            <input type="text" name="Yil" style="width:30px;" />&nbsp;
+            <input type="text" name="Saat" style="width:30px;" />:
+            <input type="text" name="Dakika" style="width:30px;" />:
+            <input type="text" name="Saniye" style="width:30px;" />
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Kaydet" class="btn btn-default">
+    </div>
+</div>*@
+
+

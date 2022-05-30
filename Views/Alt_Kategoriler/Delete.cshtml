@@ -1,0 +1,40 @@
+﻿@model FinalProject.Models.Alt_Kategoriler
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sil</h2>
+
+<h3>Alt Kategoriyi silmek istediğinize emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.altKategori_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.altKategori_ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategoriler.kategori_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoriler.kategori_ad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="silbtn" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "backtolist" })
+        </div>
+    }
+</div>

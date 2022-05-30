@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="054b9549b7364e449ff2303e0c906ac1" Name="Diagram1">
+        <EntityTypeShape EntityType="finalprojectModel.Uye_giris" Width="1.5" PointX="1.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalprojectModel.Alt_Kategoriler" Width="1.5" PointX="7.875" PointY="0.875" />
+        <EntityTypeShape EntityType="finalprojectModel.Cihazlar" Width="1.5" PointX="3.375" PointY="1.125" />
+        <EntityTypeShape EntityType="finalprojectModel.Kategoriler" Width="1.5" PointX="5.625" PointY="0.875" />
+        <AssociationConnector Association="finalprojectModel.FK_Alt_Kategoriler_Kategoriler" />
+        <AssociationConnector Association="finalprojectModel.FK_Kategoriler_Cihazlar" />
+        <EntityTypeShape EntityType="finalprojectModel.Urunler" Width="1.5" PointX="10.125" PointY="0.875" />
+        <AssociationConnector Association="finalprojectModel.FK_Urunler_Urunler" />
+        <EntityTypeShape EntityType="finalprojectModel.Populer_Icerikler" Width="1.5" PointX="0.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<FinalProject.Models.Populer_Icerikler>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Popüler İçerikler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create", null, new { @class = "detaybtn" })
+
+
+    <table class="table" style="color:white;"">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pop_icerik_adi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pop_icerik_img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pop_icerik_link)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pop_icerik_adi)
+        </td>
+        <td>
+            <img style="object-fit:cover" src="~/Content/assets/img/@item.pop_icerik_img" width="100" height="100" />
+        </td>
+        <td>
+            <a href="@item.pop_icerik_link">
+                @Html.DisplayFor(modelItem => item.pop_icerik_link)
+
+            </a>
+        </td>
+
+
+        <td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.id }, new { @class = "editbtn" }) |
+            @Html.ActionLink("Detay", "Details", new { id = item.id }, new { @class = "detaybtn" }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "silbtn" })
+        </td>
+        
+    </tr>
+        }
+
+    </table>

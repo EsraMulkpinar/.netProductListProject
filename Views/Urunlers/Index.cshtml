@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FinalProject.Models.Urunler>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ürünler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create", null, new { @class = "detaybtn" })
+</p>
+<table class="table" style="color:white;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.urun_ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.urun_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.indirme_linki)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alt_Kategoriler.altKategori_ad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.urun_ad)
+    </td>
+    <td>
+        <img style="object-fit:cover" src="~/Content/assets/img/@item.urun_img" width="100" height="100" />
+    </td>
+    <td>
+        <a href="@item.indirme_linki">
+            @Html.DisplayFor(modelItem => item.indirme_linki)
+
+        </a>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Alt_Kategoriler.altKategori_ad)
+    </td>
+    <td>
+    <td>
+        @Html.ActionLink("Düzenle", "Edit", new { id = item.id }, new { @class = "editbtn" }) |
+        @Html.ActionLink("Detay", "Details", new { id = item.id }, new { @class = "detaybtn" }) |
+        @Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "silbtn" })
+    </td>
+    
+</tr>
+}
+
+</table>

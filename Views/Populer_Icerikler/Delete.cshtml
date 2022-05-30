@@ -1,0 +1,50 @@
+﻿@model FinalProject.Models.Populer_Icerikler
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Sil</h2>
+
+<h3>Cihazı silmek istediğinize emin misiniz?</h3>
+
+<div>
+    <h4>Popüler İçerikler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pop_icerik_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pop_icerik_adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pop_icerik_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pop_icerik_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pop_icerik_link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pop_icerik_link)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="silbtn" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "backtolist" })
+        </div>
+    }
+</div>

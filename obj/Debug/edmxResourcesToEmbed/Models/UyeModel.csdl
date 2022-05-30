@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="finalprojectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Uye_giris">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="finalprojectEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Uye_giris" EntityType="Self.Uye_giris" />
+    <EntitySet Name="Alt_Kategoriler" EntityType="finalprojectModel.Alt_Kategoriler" />
+    <EntitySet Name="Cihazlar" EntityType="finalprojectModel.Cihazlar" />
+    <EntitySet Name="Kategoriler" EntityType="finalprojectModel.Kategoriler" />
+    <AssociationSet Name="FK_Alt_Kategoriler_Kategoriler" Association="finalprojectModel.FK_Alt_Kategoriler_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="Alt_Kategoriler" EntitySet="Alt_Kategoriler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kategoriler_Cihazlar" Association="finalprojectModel.FK_Kategoriler_Cihazlar">
+      <End Role="Cihazlar" EntitySet="Cihazlar" />
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+    </AssociationSet>
+    <EntitySet Name="Urunler" EntityType="finalprojectModel.Urunler" />
+    <AssociationSet Name="FK_Urunler_Urunler" Association="finalprojectModel.FK_Urunler_Urunler">
+      <End Role="Alt_Kategoriler" EntitySet="Alt_Kategoriler" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <EntitySet Name="Populer_Icerikler" EntityType="finalprojectModel.Populer_Icerikler" />
+  </EntityContainer>
+  <EntityType Name="Alt_Kategoriler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="altKategori_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kategori_id" Type="Int32" />
+    <NavigationProperty Name="Kategoriler" Relationship="finalprojectModel.FK_Alt_Kategoriler_Kategoriler" FromRole="Alt_Kategoriler" ToRole="Kategoriler" />
+    <NavigationProperty Name="Urunler" Relationship="finalprojectModel.FK_Urunler_Urunler" FromRole="Alt_Kategoriler" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Cihazlar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cihaz_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Kategoriler" Relationship="finalprojectModel.FK_Kategoriler_Cihazlar" FromRole="Cihazlar" ToRole="Kategoriler" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cihaz_id" Type="Int32" />
+    <NavigationProperty Name="Alt_Kategoriler" Relationship="finalprojectModel.FK_Alt_Kategoriler_Kategoriler" FromRole="Kategoriler" ToRole="Alt_Kategoriler" />
+    <NavigationProperty Name="Cihazlar" Relationship="finalprojectModel.FK_Kategoriler_Cihazlar" FromRole="Kategoriler" ToRole="Cihazlar" />
+  </EntityType>
+  <Association Name="FK_Alt_Kategoriler_Kategoriler">
+    <End Type="finalprojectModel.Kategoriler" Role="Kategoriler" Multiplicity="0..1" />
+    <End Type="finalprojectModel.Alt_Kategoriler" Role="Alt_Kategoriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Alt_Kategoriler">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kategoriler_Cihazlar">
+    <End Type="finalprojectModel.Cihazlar" Role="Cihazlar" Multiplicity="0..1" />
+    <End Type="finalprojectModel.Kategoriler" Role="Kategoriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cihazlar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Kategoriler">
+        <PropertyRef Name="cihaz_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ComplexType1">
+    <Property Type="Binary" Name="urun_img" MaxLength="50" FixedLength="false" />
+  </ComplexType>
+  <EntityType Name="Urunler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urun_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="altKategori_id" Type="Int32" />
+    <Property Name="urun_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Alt_Kategoriler" Relationship="finalprojectModel.FK_Urunler_Urunler" FromRole="Urunler" ToRole="Alt_Kategoriler" />
+    <Property Name="indirme_linki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Urunler_Urunler">
+    <End Type="finalprojectModel.Alt_Kategoriler" Role="Alt_Kategoriler" Multiplicity="0..1" />
+    <End Type="finalprojectModel.Urunler" Role="Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alt_Kategoriler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="altKategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Populer_Icerikler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pop_icerik_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pop_icerik_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pop_icerik_link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

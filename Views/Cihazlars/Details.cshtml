@@ -1,0 +1,26 @@
+﻿@model FinalProject.Models.Cihazlar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Cihazlar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cihaz_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cihaz_ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.id }, new { @class = "editbtn" }) |
+    @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "backtolist" })
+</p>

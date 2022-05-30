@@ -1,0 +1,77 @@
+﻿@model IEnumerable<FinalProject.Models.Uye_giris>
+
+@{
+    ViewBag.Title = "Kullanıcılar";
+    var ornekgrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    ornekgrid.Pager(WebGridPagerModes.All);
+}
+<style type="text/css">
+    .webgrid-table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1.2em;
+        width: 100%;
+        display: table;
+        border-collapse: separate;
+        border: solid 1px #98BF21;
+        background-color: white;
+        color: black;
+    }
+
+     .webgrid-table td, th {
+            border: 1px solid #98BF21;
+            padding: 3px 7px 2px;
+            
+      }
+      
+    .webgrid-header {
+        background-color: #A7C942;
+        color: #FFFFFF;
+        padding-bottom: 4px;
+        padding-top: 5px;
+        text-align: left;
+    }
+
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: #EAF2D3;
+        padding: 3px 7px 2px;
+    }
+</style>
+
+<h2>Kullanıcılar</h2>
+<form class="d-flex" id="top-20-px">
+    <input class="form-control me-2" type="search" name="search" value="@ViewBag.search" placeholder="Ara" aria-label="Search" style="width:250px">
+    <button class="btn btn-outline-primary" type="submit">Ara</button>
+</form>
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create", null, new { @class = "detaybtn" })
+</p>
+@{
+    var grid = new WebGrid(Model);
+}
+
+<div id="gridContent" style=" padding:20px; ">
+    @grid.GetHtml(
+            tableStyle: "webgrid-table",
+            headerStyle: "webgrid-header",
+            footerStyle: "webgrid-footer",
+            alternatingRowStyle: "webgrid-alternating-row",
+            selectedRowStyle: "webgrid-selected-row",
+            rowStyle: "webgrid-row-style",
+            mode: WebGridPagerModes.All,
+            columns:
+                grid.Columns(
+                grid.Column(columnName: "ad", header: "Kullanıcı Adı", format: @<text>@item.ad</text>),
+grid.Column(columnName: "soyad", header: "Kullanıcı Soyadı", format: @<text>@item.soyad</text> ),
+grid.Column(columnName: "mail", header: "Kullanıcı Maili", format: @<text>@item.mail</text>),
+grid.Column(columnName: "sifre", header: "Kullanıcı Şifresi", format: @<text>@item.sifre</text>),
+grid.Column( format: (item) => Html.ActionLink("Düzenle", "Edit", new { id = item.id },new { @class= "editbtn"})),
+grid.Column( format: (item) => Html.ActionLink("Detay", "Details", new { id = item.id }, new { @class = "detaybtn" })),
+grid.Column(format: (item) => Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "silbtn" }))
+))
+
+</div>

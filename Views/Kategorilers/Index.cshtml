@@ -1,0 +1,77 @@
+﻿@model IEnumerable<FinalProject.Models.Kategoriler>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Kategoriler</h2>
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create", null, new { @class = "detaybtn" })
+</p>
+<table class="table" style="color:white;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.kategori_ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cihazlar.cihaz_ad)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.kategori_ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cihazlar.cihaz_ad)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.id }, new { @class = "editbtn" }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.id }, new { @class = "detaybtn" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.id }, new { @class = "silbtn" })
+            </td> <td>
+    @if (ViewBag.Kategoriler != null)
+    {
+        @Html.DropDownList("Kategorilers",(IEnumerable<SelectListItem>)Model)
+
+    }
+    @*@Html.DropDownListFor(modelItem => item.cihaz_id, new SelectList(""), "--Select Product--", new { @class = "form-control" })*@
+</td>
+        </tr>
+
+    }
+
+</table>
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+@*<script>
+
+    $(document).ready(function () {
+
+        $("#CatId").change(function () {
+
+            var catId = $(this).val();
+            debugger
+            $.ajax({
+
+                type: "Post",
+                url: "/Cas/GetProductList?catId=" + catId,
+                contentType: "html",
+                success: function (response) {
+                     debugger
+                    $("#PrId").empty();
+                    $("#PrId").append(response);
+
+                }
+
+            })
+
+        })
+
+    });
+
+
+</script>*@
